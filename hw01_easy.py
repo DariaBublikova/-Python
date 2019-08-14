@@ -26,7 +26,9 @@ while i < len(num):
 
 a = input("Введите значение первой переменной:\t")
 b = input("Введите значение второй переменной:\t")
-a, b = b, a
+c = a
+a = b
+b = c
 print(a)
 print(b)
 
