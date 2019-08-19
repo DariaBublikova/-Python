@@ -5,7 +5,7 @@ import sys
 
 def like():
     like = input('Любите ли Вы играть?(Да/Нет)\t')
-    if like == 'Да':
+    if like.lower() == 'да':
         return True
     else:
         return False
@@ -22,12 +22,11 @@ if gamer['age'] < 18:
 elif gamer['age'] > 90:
     print('Игра может Вас утомить')
     answer = input('Вы уверены, что хотите играть?(Да/Нет)\t')
-    if answer == 'Да':
+    if answer.lower() == 'да':
         print('Хорошо, тогда начнем игру.')
     else:
         print('До свидания,', gamer['name'])
         sys.exit()
-
 else:
     print('Добро пожаловать в игру,', gamer['name'])
 
@@ -40,3 +39,28 @@ for char in abc:
     if char in gamer['name'].lower():
         continue
     print(char)
+
+print('Я задумал 16 чисел от 1 - 16 и расположил их в произвольном порядке в строке. Скажите мне, где какое.')
+
+line = [1, 5, 10, 7, 11, 13, 4, 8, 15, 3, 16, 14, 2, 6, 12, 9]
+closed_line = '|*|*|*|*|*|*|*|*|*|*|*|*|*|*|*|*|'
+print(closed_line)
+opened_lst = closed_line[1:-1].split('|')
+
+n = 1
+moves = 0
+while n in line:
+    print('\nГде число', n, '?')
+    answer = int(input('Введите номер ячейки:\t'))
+    moves += 1
+    if n == line[answer - 1]:
+        print('Да, действительно верно.')
+        opened_lst[answer - 1] = n
+        print('|', end = '')
+        for i in range(16):
+            print(opened_lst[i], end = '|')
+        n += 1
+    else:
+        print('Нет, не верно, попробуйте еще раз.')
+        continue
+print('\nКоличество ходов:\t', moves)
