@@ -10,14 +10,18 @@ import shutil
 def make_dir(name):
     try:
         os.mkdir(name)
+        print('Папка успешно создана.')
     except FileExistsError:
-        print('{} уже существует'.format(name))
+        #print('{} уже существует'.format(name))
+        print('Невозможно создать папку.')
 
 def remove_dir(name):
     try:
         os.rmdir(name)
+        print('Папка успешно удалена.')
     except FileNotFoundError:
-        print('{}  не существует'.format(name))
+        #print('{} не существует'.format(name))
+        print('Невозможно удалить папку.')
 
 name = [('dir_' + str(i + 1)) for  i in range(9)]
 
